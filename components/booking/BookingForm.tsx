@@ -212,7 +212,7 @@ const BookingForm = () => {
         <button className="mt-6 bg-[#34967C] text-white font-semibold text-sm sm:text-lg py-2.5 px-4 w-full sm:max-w-[246px] rounded-xl">
           {loading ? "Processing..." : "Confirm & Pay"}
         </button>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="mt-2 ml-6 text-red-500">{error}</p>}
       </form>
     </div>
   );

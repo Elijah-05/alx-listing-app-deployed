@@ -103,7 +103,7 @@ const PropertyDetail: React.FC<{ property: PropertyProps }> = ({ property }) => 
           <div className="border border-[#E6E6E6] grow " />
           <PropertyDescription property={property} />
           <div className="mb-4 border border-[#E6E6E6] grow " />
-          <ReviewSection reviews={property.reviews} />
+          <ReviewSection propertyId={property.id} />
         </div>
         <BookingSection price={property.price} />
       </div>

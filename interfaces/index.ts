@@ -59,6 +59,7 @@ export interface LayoutProps {
 }
 
 export interface PropertyProps {
+  id: string;
   name: string;
   address: {
     state: string;
