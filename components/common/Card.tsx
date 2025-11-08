@@ -1,9 +1,11 @@
 import { PropertyProps } from "@/interfaces";
 import Image from "next/image";
-import { FaStar, FaBed, FaBath, FaUserFriends } from "react-icons/fa";
+import Link from "next/link";
+import { FaStar } from "react-icons/fa";
 
 export default function Card({
-  image,
+  id,
+  images,
   name,
   discount,
   category = [],
@@ -13,11 +15,11 @@ export default function Card({
   price,
 }: PropertyProps) {
   return (
-    <div className="bg-white rounded-3xl shadow-lg">
+    <Link href={`/property/${id}`} className="bg-white rounded-3xl shadow-lg">
       <div className="relative">
         <div className="rounded-2xl overflow-hidden">
           <Image
-            src={"/assets/image/living-room.png"}
+            src={images[0]}
             alt={name}
             width={350}
             height={200}
@@ -106,6 +108,6 @@ export default function Card({
           <span className="text-gray-400 text-base mb-1">/n</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

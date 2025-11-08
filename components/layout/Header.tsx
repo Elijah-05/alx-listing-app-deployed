@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 
@@ -7,7 +8,7 @@ const Header: React.FC = () => {
     <header className="max-sm:hidden sticky top-0 z-[99] w-full bg-[#FFFFFF]">
       <nav className=" top- bg-[#FFFFFF] z-[999] border-b border-[#EBEBEB] py-3 px-3 max-sm:pl-2">
         <div className="max-w-[1500px] mx-auto flex items-center justify-between gap-2 sm:gap-4">
-          <div className="max-sm:hidden shrink-0 w-[46px] md:w-[58px]">
+          <Link href="/" className="max-sm:hidden shrink-0 w-[46px] md:w-[58px]">
             <Image
               src={"/assets/icon/alx-logo.png"}
               alt="ALX Logo"
@@ -15,7 +16,7 @@ const Header: React.FC = () => {
               height={40}
               className="w-full h-full"
             />
-          </div>
+          </Link>
 
           <div className="max-sm:hidden min-w-0 w-fit flex justify-between h-full border border-[#F6F6F6] rounded-full py-2 pl-4 lg:pl-8 lg:pr-[.6875rem]">
             <div className="min-w-0 sm:w-full max-w-36 md:max-w-38 lg:max-w-64 xl:max-w-72">

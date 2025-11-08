@@ -12,7 +12,7 @@ const ReviewSection: React.FC<{ propertyId: string }> = ({ propertyId }) => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `/api/properties/${propertyId}/reviews`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${propertyId}/reviews`
         );
         setReviews(response.data);
       } catch (error) {
@@ -30,9 +30,9 @@ const ReviewSection: React.FC<{ propertyId: string }> = ({ propertyId }) => {
   }
 
   return (
-    <div className="mt-8">
+    <div className="w-full mt-8">
       <h3 className="text-2xl font-semibold">Reviews</h3>
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-[470px_470px] gap-10">
+      <div className="mt-8 flex flex-wrap gap-10">
         {reviews.map((review, index) => (
           <div key={index} className="pb-4 mb-4">
             <div className="flex items-center">

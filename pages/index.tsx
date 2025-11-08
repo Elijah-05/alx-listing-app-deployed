@@ -1,7 +1,8 @@
 import Card from "@/components/common/Card";
 import Pill from "@/components/common/Pill";
 import CategoryIcons from "@/components/layout/CategoryIcons";
-import { CATEGORYICONS, PROPERTYLISTINGSAMPLE } from "@/constants";
+import { CATEGORYICONS } from "@/constants";
+import { PropertyProps } from "@/interfaces";
 import axios from "axios";
 import { Geist, Geist_Mono } from "next/font/google";
 import { useCallback, useEffect, useState } from "react";
@@ -27,21 +28,23 @@ const filterOptions = [
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
-  const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useState<PropertyProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   const filterList = useCallback(() => {
-    return PROPERTYLISTINGSAMPLE.filter((prop) => {
+    return properties.filter((property) => {
       if (activeFilter === "All") {
         return true;
-      } else prop.category.includes(activeFilter);
+      } else return property.category.includes(activeFilter);
     });
-  }, [activeFilter]);
+  }, [activeFilter, properties]);
 
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get("/api/properties");
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`
+        );
         setProperties(response.data);
       } catch (error) {
         console.error("Error fetching properties:", error);
@@ -54,7 +57,11 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="h-[70vh] grid place-content-center">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (

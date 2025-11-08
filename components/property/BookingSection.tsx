@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const BookingSection: React.FC<{ price: number }> = ({ price }) => {
@@ -8,7 +9,7 @@ const BookingSection: React.FC<{ price: number }> = ({ price }) => {
   const total = subtotal - discount + serviceFee;
 
   return (
-    <div className="bg-white px-8 py-4 shadow-md border border-[#EAEAEA] rounded-xl w-full max-w-sm">
+    <div className="bg-white px-8 py-4 shadow-md border border-[#EAEAEA] rounded-xl">
       {/* Price per night */}
       <h3 className="text-2xl font-semibold">
         ${price}
@@ -19,14 +20,18 @@ const BookingSection: React.FC<{ price: number }> = ({ price }) => {
 
       {/* Check-in and Check-out */}
       <div className="mt-8">
-        <label className="block text-gray-700 text-sm font-medium">Check in</label>
+        <label className="block text-gray-700 text-sm font-medium">
+          Check in
+        </label>
         <input
           type="date"
           className="border border-[#E6E6E6] rounded-md p-2 w-full mt-2 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </div>
       <div className="mt-4">
-        <label className="block text-gray-700 text-sm font-medium">Check out</label>
+        <label className="block text-gray-700 text-sm font-medium">
+          Check out
+        </label>
         <input
           type="date"
           className="border border-[#E6E6E6] rounded-md p-2 w-full mt-2 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -36,7 +41,9 @@ const BookingSection: React.FC<{ price: number }> = ({ price }) => {
       {/* Cost breakdown */}
       <div className="mt-6 space-y-2 text-black">
         <div className="flex justify-between">
-          <span className="text-[#8F8F8F]">${50} × {nights} nights</span>
+          <span className="text-[#8F8F8F]">
+            ${50} × {nights} nights
+          </span>
           <span>${subtotal}</span>
         </div>
         <div className="flex justify-between">
@@ -55,9 +62,14 @@ const BookingSection: React.FC<{ price: number }> = ({ price }) => {
       </div>
 
       {/* Reserve Button */}
-      <button className="mt-6 w-full bg-[#34967C] hover:bg-[#2c7a5a] text-white font-medium py-3 rounded-[15px] transition-colors">
-        Reserve now
-      </button>
+      <Link href={`/booking`}>
+        <button
+          type="button"
+          className="mt-6 w-full bg-[#34967C] hover:bg-[#2c7a5a] text-white font-medium py-3 rounded-[15px] transition-colors"
+        >
+          Reserve now
+        </button>
+      </Link>
     </div>
   );
 };

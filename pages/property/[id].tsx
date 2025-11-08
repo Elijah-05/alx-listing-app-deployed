@@ -1,5 +1,4 @@
 import PropertyDetail from "@/components/property/PropertyDetail";
-import { PROPERTYLISTINGSAMPLE } from "@/constants/index";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -8,6 +7,8 @@ export default function PropertyPage() {
   const router = useRouter();
   const { id } = router.query;
 
+  console.log("Property ID from URL:", id);
+
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +16,9 @@ export default function PropertyPage() {
     const fetchProperty = async () => {
       if (!id) return;
       try {
-        const response = await axios.get(`/api/properties/${id}`);
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${id}`
+        );
         setProperty(response.data);
       } catch (error) {
         console.error("Error fetching property details:", error);
@@ -28,7 +31,11 @@ export default function PropertyPage() {
   }, [id]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="h-[70vh] grid place-content-center">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   if (!property) {
