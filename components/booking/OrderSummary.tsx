@@ -2,7 +2,13 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 
-const OrderSummary: React.FC<{ bookingDetails: any }> = ({ bookingDetails }) => (
+const OrderSummary: React.FC<{ bookingDetails: {
+    propertyName: string;
+    startDate: string;
+    totalNights: number;
+    bookingFee: number;
+    price: number;
+} }> = ({ bookingDetails }) => (
   <div className="bg-white h-fit px-4 sm:p-6 md:p-8 lg:p-9.5 sm:border border-[#EAEAEA] sm:shadow-md sm:rounded-[15px]">
     <h2 className="text-xl font-semibold">Review Order Details</h2>
     <div className="mt-2 md:mt-4">

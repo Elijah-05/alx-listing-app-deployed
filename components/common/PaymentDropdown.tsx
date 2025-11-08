@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { BsCreditCard } from "react-icons/bs";
-import { RxChevronDown, RxChevronUp } from "react-icons/rx";
+import { RxChevronDown } from "react-icons/rx";
 
 export default function PaymentDropdown() {
   const [selected, setSelected] = useState<string>("");

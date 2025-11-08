@@ -3,10 +3,10 @@ import CancellationPolicy from "./CancellationPolicy";
 import PaymentDropdown from "../common/PaymentDropdown";
 import { RxChevronDown } from "react-icons/rx";
 import { FormEvent, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 const BookingForm = () => {
-  const [formData, setFormData] = useState({
+  const [, ] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -26,7 +26,7 @@ const BookingForm = () => {
     setError(null);
 
     try {
-      const response = await axios.post("/api/bookings", formData);
+      // const response = await axios.post("/api/bookings", formData);
       alert("Booking confirmed!");
     } catch {
       setError("Failed to submit booking.");
